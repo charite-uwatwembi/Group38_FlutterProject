@@ -2,7 +2,7 @@ class AppStrings {
   static String emailHint = "Please, enter your Email...",
       forgetPassword="Forgot Password?",
       login = "Sign-In",
-      signUp = "Sign Up",
+      signUp = "Register",
       nameHint = "Don't mind giving us your FullName...",
       welcomeBack="Glad to have you back 😊!",
       welcomMsg = " Hello welcome to Baho, how can we help you today😊!",
