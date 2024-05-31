@@ -3,14 +3,14 @@ import 'package:baho_app/consts/images.dart';
 import 'package:baho_app/consts/strings.dart';
 import 'package:baho_app/res/components/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:baho_app/views/SignUp_View/Signup_view.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:baho_app/consts/fonts.dart';
+import 'package:baho_app/views/Login_view/login_view.dart';
 import 'package:baho_app/res/components/custom_textfield.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,12 @@ class LoginView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  AppAssets.logo,
+                  AppAssets.baho,
                   width: 200,
                 ),
                 10.heightBox,
-                AppStyles.bold(title: AppStrings.welcomeBack, size:AppFontSizes.large),
+                AppStyles.bold(title: AppStrings.welcomMsg, size:AppFontSizes.large),
+                AppStyles.bold(title: AppStrings.getStarted, size:AppFontSizes.large, alignment: TextAlign.center),
                 //AppStrings.welcomeBack.text.make(),
               ],
             )),
@@ -41,29 +42,28 @@ class LoginView extends StatelessWidget {
                          child: Column(
                       
                       children: [
+                        CustomTextfield(hint: AppStrings.nameHint),
+                        SizedBox(height: 20.0),
                         CustomTextfield(hint: AppStrings.emailHint),
                         SizedBox(height: 20.0),
                         CustomTextfield(hint: AppStrings.passwordHint),
                         SizedBox(height: 20.0),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: AppStrings.forgetPassword.text.make(),
-                        ),
-                        SizedBox(height: 20.0),
+                       
                         CustomButton(
-                            buttonText: AppStrings.login, onTap: () {}),
+                            buttonText: AppStrings.signUp, onTap: () {}),
                         20.0.heightBox,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            AppStrings.dontHaveAccount.text.make(),
+                            AppStrings.haveAccount.text.make(),
                             8.widthBox,
                             GestureDetector(
-                              onTap: (){
-                                Get.to(() => const SignupView());
+                              onTap: () {
+                                Get.back();
                               },
-                              
-                              child: AppStyles.bold(title: AppStrings.signUp),
+                              child: AppStyles.bold(
+                                title: AppStrings.login
+                              ),
                             )
                           ],
                         )
