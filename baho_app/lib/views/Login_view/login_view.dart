@@ -2,6 +2,7 @@ import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/consts/images.dart';
 import 'package:baho_app/consts/strings.dart';
 import 'package:baho_app/res/components/custom_button.dart';
+import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,10 @@ class LoginView extends StatelessWidget {
                         ),
                         SizedBox(height: 20.0),
                         CustomButton(
-                            buttonText: AppStrings.login, onTap: () {}),
+                            buttonText: AppStrings.login, 
+                            onTap: () {
+                              Get.to(() => const HomeView());
+                            }),
                         20.0.heightBox,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
