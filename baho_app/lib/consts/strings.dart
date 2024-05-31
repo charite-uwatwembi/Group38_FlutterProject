@@ -1,7 +1,7 @@
 class AppStrings {
   static String emailHint = "Put in your Email...",
       forgetPassword="Forgot Password ?",
-      login = "LogIn",
+      login = "Sign-In",
       signUp = "Sign Up",
       nameHint = "Don't mind giving us your FullName...",
       welcomeBack="Glad to have you back 😊!",
