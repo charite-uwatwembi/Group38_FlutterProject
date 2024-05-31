@@ -7,7 +7,7 @@ class AppStrings {
       welcomeBack="Glad to have you back 😊!",
       welcomMsg = " Hello welcome to Baho, how can we help you today😊!",
       haveAccount = "Have an existing account?",
-      getStarted = "Get Started by signingUp Now And become part of the Family 😊!",
+      getStarted = "Gets tarted and be part of the family😊!",
       dontHaveAccount = "Don't have an account ?",
       passwordHint = "Put in your Password...";
 }
