@@ -1,5 +1,5 @@
 class AppStrings {
-  static String emailHint = "Put in your Email...",
+  static String emailHint = "Please, enter your Email...",
       forgetPassword="Forgot Password ?",
       login = "Sign-In",
       signUp = "Sign Up",
