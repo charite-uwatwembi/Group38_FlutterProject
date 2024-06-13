@@ -36,7 +36,6 @@ class SignupView extends StatelessWidget {
             30.heightBox,
             Expanded(
                 child: Container(
-                    color: Color.fromARGB(255, 240, 247, 250),
                     child: Form(
                       child:SingleChildScrollView(
                          child: Column(

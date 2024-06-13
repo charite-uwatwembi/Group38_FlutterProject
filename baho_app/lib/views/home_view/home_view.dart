@@ -9,13 +9,15 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
+        iconTheme: IconThemeData(
+          color: AppColors.bgColor, // Set the back button color to white
+        ),
         title: Row(
           children: [
-            Icon(Icons.arrow_back),
             SizedBox(width: 10),
             Text(
               "Welcome Dear Patient",
-              style: TextStyle(color: AppColors.textColor),
+              style: TextStyle(color: AppColors.bgColor),
             ),
           ],
         ),
@@ -35,7 +37,6 @@ class HomeView extends StatelessWidget {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.search),
                     ),
                   ),
                 ),
@@ -61,7 +62,7 @@ class HomeView extends StatelessWidget {
                   return DoctorCard(
                     name: 'Dr Alex',
                     specialty: 'Neurologist',
-                    imageUrl: 'assets/images/Alex.png', 
+                    imageUrl: 'assets/images/Alex.png',
                   );
                 },
               ),
@@ -84,6 +85,8 @@ class HomeView extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
