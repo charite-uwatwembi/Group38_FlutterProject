@@ -14,6 +14,7 @@ class LandingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // Remove the debug banner
       home: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -64,10 +65,11 @@ class LandingView extends StatelessWidget {
                   ),
                   SizedBox(height: 100),
                   CustomButton(
-                            buttonText: AppStrings.start, 
-                            onTap: () {
-                              Get.to(() =>  HomeView());
-                            }),
+                    buttonText: AppStrings.start,
+                    onTap: () {
+                      Get.to(() => HomeView());
+                    },
+                  ),
                 ],
               ),
             ),

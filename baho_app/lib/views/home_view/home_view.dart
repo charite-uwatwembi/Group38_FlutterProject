@@ -1,5 +1,8 @@
+// home_view.dart
 import 'package:flutter/material.dart';
 import 'package:baho_app/consts/consts.dart';
+import 'package:baho_app/views/doctor_view/doctor_card.dart'; // Import the DoctorCard class
+import 'package:baho_app/views/categories_view/categories_view.dart'; // Import the categories view
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -87,6 +90,15 @@ class HomeView extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TotalCategoryPage()),
+            );
+          }
+          // Add more conditions for other indices if needed
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -103,64 +115,6 @@ class HomeView extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class DoctorCard extends StatelessWidget {
-  final String name;
-  final String specialty;
-  final String imageUrl;
-
-  const DoctorCard({
-    Key? key,
-    required this.name,
-    required this.specialty,
-    required this.imageUrl,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-              child: Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  specialty,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),

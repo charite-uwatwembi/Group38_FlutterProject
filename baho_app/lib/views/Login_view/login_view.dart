@@ -68,7 +68,7 @@ class LoginView extends StatelessWidget {
                                 Get.to(() => const SignupView());
                               },
                               
-                              child: AppStyles.bold(title: AppStrings.signUp),
+                              child: AppStyles.bold(title: AppStrings.signUp, color: Colors.blue),
                             )
                           ],
                         )

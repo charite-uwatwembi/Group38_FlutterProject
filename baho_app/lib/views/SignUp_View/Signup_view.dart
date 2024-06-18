@@ -61,7 +61,8 @@ class SignupView extends StatelessWidget {
                                 Get.back();
                               },
                               child: AppStyles.bold(
-                                title: AppStrings.login
+                                title: AppStrings.login,
+                                color: AppColors.primaryColor,
                               ),
                             )
                           ],
