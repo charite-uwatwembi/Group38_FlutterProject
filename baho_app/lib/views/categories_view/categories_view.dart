@@ -51,8 +51,8 @@ class TotalCategoryPage extends StatelessWidget {
               specialists: 13,
             ),
             CategoryCard(
-              icon: Icons.opacity,
-              label: 'Liver',
+              icon: Icons.health_and_safety,
+              label: 'Dental',
               specialists: 5,
             ),
           ],

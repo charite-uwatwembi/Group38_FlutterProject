@@ -9,6 +9,55 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Create a list of doctor data
+    final List<Map<String, String>> doctors = [
+      {
+        'name': 'Dr Alex',
+        'specialty': 'Neurologist',
+        'imageUrl': 'assets/images/Alex.png',
+      },
+      {
+        'name': 'Dr Sarah',
+        'specialty': 'Cardiologist',
+        'imageUrl': 'assets/images/jeanne.png',
+      },
+      {
+        'name': 'Dr John',
+        'specialty': 'Orthopedist',
+        'imageUrl': 'assets/images/jean.png',
+      },
+      {
+        'name': 'Dr Joseph',
+        'specialty': 'Pediatrician',
+        'imageUrl': 'assets/images/doctor1.jpeg',
+      },
+      {
+        'name': 'Dr Michael',
+        'specialty': 'Dermatology',
+        'imageUrl': 'assets/images/doctor2.jpeg',
+      },
+      {
+        'name': 'Dr Linda',
+        'specialty': 'Psychiatrist',
+        'imageUrl': 'assets/images/doctor4.jpeg',
+      },
+      {
+        'name': 'Dr Benoit',
+        'specialty': 'Dentist',
+        'imageUrl': 'assets/images/doctor5.jpeg',
+      },
+      {
+        'name': 'Dr Ariane',
+        'specialty': 'Pediatrician',
+        'imageUrl': 'assets/images/ariane.jpeg',
+      },
+      {
+        'name': 'Dr Aime',
+        'specialty': 'Internist',
+        'imageUrl': 'assets/images/doctor3.jpeg',
+      },
+    ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
@@ -60,12 +109,13 @@ class HomeView extends StatelessWidget {
                   crossAxisSpacing: 10,
                   childAspectRatio: 0.75,
                 ),
-                itemCount: 9, // Number of doctor cards
+                itemCount: doctors.length, // Number of doctor cards
                 itemBuilder: (context, index) {
+                  final doctor = doctors[index];
                   return DoctorCard(
-                    name: 'Dr Alex',
-                    specialty: 'Neurologist',
-                    imageUrl: 'assets/images/Alex.png',
+                    name: doctor['name']!,
+                    specialty: doctor['specialty']!,
+                    imageUrl: doctor['imageUrl']!,
                   );
                 },
               ),

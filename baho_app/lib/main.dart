@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'consts/fonts.dart';
 import 'package:get/get.dart';
-import 'package:baho_app/views/Login_view/login_view.dart';
-
+import 'consts/fonts.dart';
+import 'views/login_view/login_view.dart';
+import 'views/landing_view/landing_view.dart';
+import 'views/home_view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: AppFonts.nunito),
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      initialRoute: '/LoginView',
+      getPages: [
+        GetPage(name: '/LoginView', page: () => LoginView()),
+        GetPage(name: '/LandingView', page: () => LandingView()),
+        GetPage(name: '/HomeView', page: () => HomeView()),
+      ],
     );
   }
 }
