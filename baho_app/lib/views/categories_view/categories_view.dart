@@ -1,14 +1,14 @@
 import 'package:baho_app/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
+import 'package:baho_app/views/appointments_view/appointments_view.dart'; // Import the AppointmentsView
 
 class TotalCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Total Category',style: TextStyle(color: Colors.white)),
-        
+        title: Text('Total Category', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -66,6 +66,11 @@ class TotalCategoryPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => HomeView()),
+            );
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AppointmentsView()),
             );
           }
           // Add more conditions for other indices if needed

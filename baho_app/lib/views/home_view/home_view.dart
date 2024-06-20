@@ -1,8 +1,8 @@
-// home_view.dart
 import 'package:flutter/material.dart';
 import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/views/doctor_view/doctor_card.dart'; // Import the DoctorCard class
 import 'package:baho_app/views/categories_view/categories_view.dart'; // Import the categories view
+import 'package:baho_app/views/appointments_view/appointments_view.dart'; // Import the appointments view
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -37,7 +37,7 @@ class HomeView extends StatelessWidget {
         'imageUrl': 'assets/images/doctor2.jpeg',
       },
       {
-        'name': 'Dr Linda',
+        'name': 'Dr Leon',
         'specialty': 'Psychiatrist',
         'imageUrl': 'assets/images/doctor4.jpeg',
       },
@@ -141,13 +141,21 @@ class HomeView extends StatelessWidget {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         onTap: (index) {
-          if (index == 1) {
+          if (index == 0) {
+            // Already on HomeView, do nothing
+          } else if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => TotalCategoryPage()),
             );
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AppointmentsView()),
+            );
+          } else if (index == 3) {
+            // Add navigation to settings if needed
           }
-          // Add more conditions for other indices if needed
         },
         items: [
           BottomNavigationBarItem(
