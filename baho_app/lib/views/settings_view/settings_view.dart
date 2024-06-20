@@ -20,8 +20,8 @@ class SettingsView extends StatelessWidget {
           children: [
             SizedBox(height: 20),
             CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/images/doctor1.jpeg'), // Replace with the correct image path
+              radius: 100,
+              backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
             ),
             SizedBox(height: 10),
             Text(

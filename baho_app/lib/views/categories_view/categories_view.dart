@@ -1,6 +1,7 @@
 import 'package:baho_app/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
+import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart'; // Import the AppointmentsView
 
 class TotalCategoryPage extends StatelessWidget {
@@ -72,7 +73,13 @@ class TotalCategoryPage extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => AppointmentsView()),
             );
+          } else if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsView()),
+            );
           }
+          
           // Add more conditions for other indices if needed
         },
         items: [
