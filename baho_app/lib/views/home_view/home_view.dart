@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:baho_app/consts/consts.dart';
-import 'package:baho_app/views/doctor_view/doctor_card.dart'; // Import the DoctorCard class
-import 'package:baho_app/views/categories_view/categories_view.dart'; // Import the categories view
-import 'package:baho_app/views/appointments_view/appointments_view.dart'; // Import the appointments view
+import 'package:baho_app/views/doctor_view/doctor_card.dart';
+import 'package:baho_app/views/categories_view/categories_view.dart';
+import 'package:baho_app/views/appointments_view/appointments_view.dart';
+import 'package:baho_app/views/settings_view/settings_view.dart'; // Import the settings view
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Create a list of doctor data
     final List<Map<String, String>> doctors = [
       {
         'name': 'Dr Alex',
@@ -154,7 +154,10 @@ class HomeView extends StatelessWidget {
               MaterialPageRoute(builder: (context) => AppointmentsView()),
             );
           } else if (index == 3) {
-            // Add navigation to settings if needed
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsView()),
+            );
           }
         },
         items: [
