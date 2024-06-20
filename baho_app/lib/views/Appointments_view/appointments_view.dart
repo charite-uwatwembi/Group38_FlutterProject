@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
+import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/consts/consts.dart';
 
 class AppointmentsView extends StatelessWidget {
@@ -11,41 +12,49 @@ class AppointmentsView extends StatelessWidget {
       {
         'name': 'Dr John',
         'time': '9-AM to 12 PM',
+        'date': '2024-06-21',
         'imageUrl': 'assets/images/jean.png',
       },
       {
         'name': 'Dr Joseph',
         'time': '9-AM to 12 PM',
+        'date': '2024-06-22',
         'imageUrl': 'assets/images/doctor1.jpeg',
       },
       {
         'name': 'Dr Michael',
         'time': '11-AM to 17 PM',
+        'date': '2024-06-23',
         'imageUrl': 'assets/images/doctor2.jpeg',
       },
       {
         'name': 'Dr Aime',
         'time': '9-PM to 6-AM',
+        'date': '2024-06-24',
         'imageUrl': 'assets/images/doctor3.jpeg',
       },
       {
         'name': 'Dr Leon',
         'time': '9-AM to 12 PM',
+        'date': '2024-06-25',
         'imageUrl': 'assets/images/doctor4.jpeg',
       },
       {
         'name': 'Ariane',
         'time': '5-PM to 9 PM',
+        'date': '2024-06-26',
         'imageUrl': 'assets/images/ariane.jpeg',
       },
       {
         'name': 'Dr Sarah',
         'time': '5-PM to 9 PM',
+        'date': '2024-06-27',
         'imageUrl': 'assets/images/jeanne.png',
       },
       {
         'name': 'Dr Alex',
         'time': '5-PM to 9 PM',
+        'date': '2024-06-28',
         'imageUrl': 'assets/images/Alex.png',
       },
     ];
@@ -79,7 +88,13 @@ class AppointmentsView extends StatelessWidget {
               appointment['name']!,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(appointment['time']!),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(appointment['time']!),
+                Text(appointment['date']!),
+              ],
+            ),
           );
         },
       ),
@@ -116,7 +131,11 @@ class AppointmentsView extends StatelessWidget {
           } else if (index == 2) {
             // Already on AppointmentsView, do nothing
           } else if (index == 3) {
-            // Add navigation to settings if needed
+            // Navigate to SettingsView
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsView()),
+            );
           }
         },
       ),

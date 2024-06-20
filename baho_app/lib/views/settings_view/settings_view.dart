@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
+import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 
 class SettingsView extends StatelessWidget {
@@ -52,6 +53,10 @@ class SettingsView extends StatelessWidget {
                       title: Text('Logout', style: TextStyle(color: Colors.red)),
                       onTap: () {
                         // Handle Logout tap
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginView()),
+                        );
                       },
                     ),
                   ],
