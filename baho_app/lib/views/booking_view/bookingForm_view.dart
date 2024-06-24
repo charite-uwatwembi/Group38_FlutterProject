@@ -14,7 +14,7 @@ class BookingFormPage extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         title: Text(doctorName),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +99,7 @@ class BookingFormPage extends StatelessWidget {
                 prefixIcon: Icon(Icons.description),
               ),
             ),
-            Spacer(),
+            SizedBox(height: 16),
             Center(
               child: ElevatedButton(
                 onPressed: () {
