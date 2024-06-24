@@ -1,3 +1,4 @@
+import 'package:baho_app/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
@@ -82,10 +83,11 @@ class FeedbackPage extends StatelessWidget {
                 child: Text('Submit'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
+                  textStyle: TextStyle(color: Colors.white),
                   minimumSize: Size(150, 40),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 80),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -96,7 +98,8 @@ class FeedbackPage extends StatelessWidget {
                 child: Text('Home'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
-                  minimumSize: Size(150, 40),
+                  textStyle: TextStyle(color: Colors.white),
+                  minimumSize: Size(250, 40),
                 ),
               ),
             ],
