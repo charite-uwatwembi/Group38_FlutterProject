@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/views/doctor_view/doctor_card.dart';
+import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
-import 'package:baho_app/views/settings_view/settings_view.dart'; // Import the settings view
+import 'package:baho_app/views/settings_view/settings_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,46 +15,91 @@ class HomeView extends StatelessWidget {
         'name': 'Dr Alex',
         'specialty': 'Neurologist',
         'imageUrl': 'assets/images/Alex.png',
+        'phoneNumber': '+250787118178',
+        'about': 'Neurologist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Neurology, Family physician',
       },
-      {
+       {
         'name': 'Dr Sarah',
         'specialty': 'Cardiologist',
         'imageUrl': 'assets/images/jeanne.png',
+        'phoneNumber': '+250787118178',
+        'about': 'Cardiologist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Cardiology, Family physician',
       },
       {
         'name': 'Dr John',
         'specialty': 'Orthopedist',
         'imageUrl': 'assets/images/jean.png',
+        'phoneNumber': '+250787118178',
+        'about': 'Orthopedist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Orthopedics, Family physician',
       },
       {
         'name': 'Dr Joseph',
         'specialty': 'Pediatrician',
         'imageUrl': 'assets/images/doctor1.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Pediatrics, Family physician',
       },
       {
         'name': 'Dr Michael',
         'specialty': 'Dermatology',
         'imageUrl': 'assets/images/doctor2.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Dermatologist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Dermatology, Family physician',
       },
       {
         'name': 'Dr Leon',
         'specialty': 'Psychiatrist',
         'imageUrl': 'assets/images/doctor4.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Psychiatrist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Psychiatry, Family physician',
       },
       {
         'name': 'Dr Benoit',
         'specialty': 'Dentist',
         'imageUrl': 'assets/images/doctor5.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Dentist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Dentistry, Family physician',
       },
       {
         'name': 'Dr Ariane',
         'specialty': 'Pediatrician',
         'imageUrl': 'assets/images/ariane.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Pediatrics, Family physician',
       },
       {
         'name': 'Dr Aime',
         'specialty': 'Internist',
         'imageUrl': 'assets/images/doctor3.jpeg',
+        'phoneNumber': '+250787118178',
+        'about': 'Internist for 10 years, worked in USA and Rwanda',
+        'address': 'Kigali, Rwanda',
+        'workingTime': '9-AM to 12-PM',
+        'services': 'Interns, Family physician',
       },
     ];
 
@@ -62,7 +107,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         iconTheme: IconThemeData(
-          color: AppColors.bgColor, // Set the back button color to white
+          color: AppColors.bgColor,
         ),
         title: Row(
           children: [
@@ -109,13 +154,18 @@ class HomeView extends StatelessWidget {
                   crossAxisSpacing: 10,
                   childAspectRatio: 0.75,
                 ),
-                itemCount: doctors.length, // Number of doctor cards
+                itemCount: doctors.length,
                 itemBuilder: (context, index) {
                   final doctor = doctors[index];
                   return DoctorCard(
                     name: doctor['name']!,
                     specialty: doctor['specialty']!,
                     imageUrl: doctor['imageUrl']!,
+                    phoneNumber: doctor['phoneNumber']!,
+                    about: doctor['about']!,
+                    address: doctor['address']!,
+                    workingTime: doctor['workingTime']!,
+                    services: doctor['services']!,
                   );
                 },
               ),
