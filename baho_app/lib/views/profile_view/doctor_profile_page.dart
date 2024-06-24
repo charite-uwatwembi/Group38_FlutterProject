@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:baho_app/consts/consts.dart';
+import 'package:baho_app/views/booking_view/bookingForm_view.dart';
 
 class DoctorProfilePage extends StatelessWidget {
   final String name;
@@ -32,6 +33,8 @@ class DoctorProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         title: Text(name),
       ),
       body: Padding(
@@ -121,7 +124,14 @@ class DoctorProfilePage extends StatelessWidget {
             SizedBox(height: 100),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookingFormPage(doctorName: name),
+                    ),
+                  );
+                },
                 child: Text(
                   'Book an appointment',
                   style: TextStyle(color: Colors.white),
