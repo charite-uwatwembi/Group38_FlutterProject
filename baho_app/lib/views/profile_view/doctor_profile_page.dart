@@ -1,5 +1,6 @@
-import 'package:baho_app/consts/consts.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:baho_app/consts/consts.dart';
 
 class DoctorProfilePage extends StatelessWidget {
   final String name;
@@ -25,6 +26,9 @@ class DoctorProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Generate a random rating between 1 and 5
+    final double rating = (Random().nextDouble() * 4 + 1).roundToDouble();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -54,27 +58,74 @@ class DoctorProfilePage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
             ),
+            SizedBox(height: 8),
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  5,
+                  (index) => Icon(
+                    index < rating ? Icons.star : Icons.star_border,
+                    color: Colors.yellow,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(height: 16),
-            Text('Phone Number'),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Phone Number',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    Icons.phone,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
             Text(phoneNumber),
             SizedBox(height: 16),
-            Text('About'),
+            Text(
+              'About',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Text(about),
             SizedBox(height: 16),
-            Text('Address'),
+            Text(
+              'Address',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Text(address),
             SizedBox(height: 16),
-            Text('Working Time'),
+            Text(
+              'Working Time',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Text(workingTime),
             SizedBox(height: 16),
-            Text('Services'),
+            Text(
+              'Services',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Text(services),
-            SizedBox(height: 150),
+            SizedBox(height: 100),
             Center(
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text('Book an appointment', 
-                style: TextStyle(color: Colors.white,)),
+                child: Text(
+                  'Book an appointment',
+                  style: TextStyle(color: Colors.white),
+                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),
