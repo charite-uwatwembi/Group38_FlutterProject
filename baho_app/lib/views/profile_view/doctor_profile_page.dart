@@ -128,7 +128,10 @@ class DoctorProfilePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BookingFormPage(doctorName: name),
+                      builder: (context) => BookingFormPage(
+                        doctorName: name,
+                        doctorImageUrl: imageUrl,
+                      ),
                     ),
                   );
                 },

@@ -1,10 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/Appointments_view/appointments_view.dart';
 
 class BookingFormPage extends StatefulWidget {
   final String doctorName;
+  final String doctorImageUrl;
 
-  const BookingFormPage({Key? key, required this.doctorName}) : super(key: key);
+  const BookingFormPage({Key? key, required this.doctorName, required this.doctorImageUrl}) : super(key: key);
 
   @override
   _BookingFormPageState createState() => _BookingFormPageState();
@@ -157,7 +159,7 @@ class _BookingFormPageState extends State<BookingFormPage> {
                     'name': widget.doctorName,
                     'time': _selectedTime != null ? _selectedTime!.format(context) : 'Time not selected',
                     'date': _selectedDate != null ? _selectedDate!.toLocal().toString().split(' ')[0] : 'Date not selected',
-                    'imageUrl': 'assets/images/doctor_placeholder.png', // Placeholder image, replace with actual image if available
+                    'imageUrl': widget.doctorImageUrl,
                   };
 
                   Navigator.pushReplacement(
