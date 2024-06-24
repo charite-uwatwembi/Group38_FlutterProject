@@ -3,6 +3,7 @@ import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
+import 'package:baho_app/views/feedback_view/feedback_view.dart'; // Import the feedback page
 
 class SettingsView extends StatelessWidget {
   @override
@@ -65,7 +66,10 @@ class SettingsView extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                // Handle feedback tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FeedbackPage()),
+                );
               },
               child: Text(
                 'Leave us a feedback',
