@@ -24,20 +24,20 @@ class FeedbackPage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: 100, // Adjust height to position avatar
-                  color: Colors.white,
+                  
                 ),
                 Positioned(
-                  top: 50, // Adjust to move avatar up or down
+                  top: 30, // Adjust to move avatar up or down
                   child: CircleAvatar(
                     radius: 80,
                     backgroundImage: AssetImage('assets/images/logo.png'), // Replace with your logo path
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 130), // Adjust to fit avatar
+                  margin: EdgeInsets.only(top: 100), // Adjust to fit avatar
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 163, 200, 218), // Skyblue background color
+                    color: Color.fromARGB(108, 168, 211, 236), // Skyblue background color
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
@@ -48,10 +48,10 @@ class FeedbackPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 50), // Adjust to fit avatar
+                        SizedBox(height: 20), // Adjust to fit avatar
                         Text(
                           'Baho',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
                         ),
                         SizedBox(height: 20),
                         Text(
@@ -98,7 +98,7 @@ class FeedbackPage extends StatelessWidget {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 30),
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
