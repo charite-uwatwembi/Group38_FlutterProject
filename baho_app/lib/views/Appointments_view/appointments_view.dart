@@ -4,7 +4,9 @@ import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/consts/consts.dart';
 
 class AppointmentsView extends StatelessWidget {
-  const AppointmentsView({super.key});
+  final Map<String, String>? newAppointment;
+
+  const AppointmentsView({Key? key, this.newAppointment}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,11 @@ class AppointmentsView extends StatelessWidget {
         'imageUrl': 'assets/images/Alex.png',
       },
     ];
+
+    // Add the new appointment if it exists
+    if (newAppointment != null) {
+      appointments.add(newAppointment!);
+    }
 
     return Scaffold(
       appBar: AppBar(
