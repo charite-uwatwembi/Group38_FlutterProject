@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:baho_app/views/booking_view/bookingForm_view.dart';
 
 class DoctorProfilePage extends StatelessWidget {
   final String name;
@@ -154,6 +156,15 @@ class DoctorProfilePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle booking functionality
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookingFormPage(
+                          doctorName: name,
+                          doctorImageUrl: imageUrl,
+                        ),
+                      ),
+                    );
                   },
                   child: Text(
                     'Book an appointment',
