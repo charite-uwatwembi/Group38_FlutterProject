@@ -10,6 +10,7 @@ class DoctorCard extends StatelessWidget {
   final String address;
   final String workingTime;
   final String services;
+  final List<Map<String, String>> availability;
 
   const DoctorCard({
     Key? key,
@@ -21,6 +22,7 @@ class DoctorCard extends StatelessWidget {
     required this.address,
     required this.workingTime,
     required this.services,
+    this.availability = const [],
   }) : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class DoctorCard extends StatelessWidget {
               address: address,
               workingTime: workingTime,
               services: services,
+              availability: availability,
             ),
           ),
         );

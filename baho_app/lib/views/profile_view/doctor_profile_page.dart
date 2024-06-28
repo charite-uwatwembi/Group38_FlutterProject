@@ -1,7 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:baho_app/consts/consts.dart';
-import 'package:baho_app/views/booking_view/bookingForm_view.dart';
 
 class DoctorProfilePage extends StatelessWidget {
   final String name;
@@ -12,6 +10,7 @@ class DoctorProfilePage extends StatelessWidget {
   final String address;
   final String workingTime;
   final String services;
+  final List<Map<String, String>> availability;
 
   const DoctorProfilePage({
     Key? key,
@@ -23,128 +22,150 @@ class DoctorProfilePage extends StatelessWidget {
     required this.address,
     required this.workingTime,
     required this.services,
+    required this.availability,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Generate a random rating between 1 and 5
     final double rating = (Random().nextDouble() * 4 + 1).roundToDouble();
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         iconTheme: IconThemeData(color: Colors.white),
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        titleTextStyle:
+            TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         title: Text(name),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage(imageUrl),
-                radius: 50,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(imageUrl),
+                  radius: 50,
+                ),
               ),
-            ),
-            SizedBox(height: 16),
-            Center(
-              child: Text(
-                name,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              SizedBox(height: 16),
+              Center(
+                child: Text(
+                  name,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Center(
-              child: Text(
-                specialty,
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+              Center(
+                child: Text(
+                  specialty,
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: List.generate(
-                  5,
-                  (index) => Icon(
-                    index < rating ? Icons.star : Icons.star_border,
-                    color: Colors.yellow,
+              SizedBox(height: 8),
+              Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(
+                    5,
+                    (index) => Icon(
+                      index < rating ? Icons.star : Icons.star_border,
+                      color: Colors.yellow,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    'Phone Number',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Phone Number',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(8),
+                  Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      Icons.phone,
+                      color: Colors.white,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.phone,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-            Text(phoneNumber),
-            SizedBox(height: 16),
-            Text(
-              'About',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(about),
-            SizedBox(height: 16),
-            Text(
-              'Address',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(address),
-            SizedBox(height: 16),
-            Text(
-              'Working Time',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(workingTime),
-            SizedBox(height: 16),
-            Text(
-              'Services',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(services),
-            SizedBox(height: 100),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BookingFormPage(
-                        doctorName: name,
-                        doctorImageUrl: imageUrl,
-                      ),
+                ],
+              ),
+              Text(phoneNumber),
+              SizedBox(height: 16),
+              Text(
+                'About',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(about),
+              SizedBox(height: 16),
+              Text(
+                'Address',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(address),
+              SizedBox(height: 16),
+              Text(
+                'Working Time',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(workingTime),
+              SizedBox(height: 16),
+              Text(
+                'Services',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(services),
+              SizedBox(height: 16),
+              Text(
+                'Availability',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Column(
+                children: availability.map((slot) {
+                  final time = slot['time'] ?? '';
+                  final status = slot['status'] ?? '';
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(time),
+                        Text(
+                          status,
+                          style: TextStyle(
+                            color: status == 'available' ? Colors.green : Colors.red,
+                          ),
+                        ),
+                      ],
                     ),
                   );
-                },
-                child: Text(
-                  'Book an appointment',
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                }).toList(),
+              ),
+              SizedBox(height: 10),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle booking functionality
+                  },
+                  child: Text(
+                    'Book an appointment',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

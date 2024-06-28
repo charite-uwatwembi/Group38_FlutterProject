@@ -6,11 +6,11 @@ import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> doctors = [
+    final List<Map<String, dynamic>> doctors = [
       {
         'name': 'Dr Alex',
         'specialty': 'Neurologist',
@@ -18,18 +18,27 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Neurologist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Neurology, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
-       {
+      {
         'name': 'Dr Sarah',
         'specialty': 'Cardiologist',
         'imageUrl': 'assets/images/jeanne.png',
         'phoneNumber': '+250787118178',
         'about': 'Cardiologist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Cardiology, Family physician',
+        'availability': [
+          {'time': '9:00 AM', 'status': 'available'},
+          {'time': '10:00 AM', 'status': 'available'},
+          {'time': '11:00 AM', 'status': 'booked'},
+        ],
       },
       {
         'name': 'Dr John',
@@ -38,8 +47,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Orthopedist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Orthopedics, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
       {
         'name': 'Dr Joseph',
@@ -48,8 +61,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Pediatrics, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
       {
         'name': 'Dr Michael',
@@ -58,8 +75,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Dermatologist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Dermatology, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'boked'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'available'},
+        ],
       },
       {
         'name': 'Dr Leon',
@@ -68,8 +89,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Psychiatrist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Psychiatry, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'available'},
+        ],
       },
       {
         'name': 'Dr Benoit',
@@ -78,8 +103,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Dentist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Dentistry, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
       {
         'name': 'Dr Ariane',
@@ -88,8 +117,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Pediatrics, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
       {
         'name': 'Dr Aime',
@@ -98,8 +131,12 @@ class HomeView extends StatelessWidget {
         'phoneNumber': '+250787118178',
         'about': 'Internist for 10 years, worked in USA and Rwanda',
         'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 12-PM',
+        'workingTime': '9-AM to 4-PM',
         'services': 'Interns, Family physician',
+        'availability': [
+          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
+          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
+        ],
       },
     ];
 
@@ -158,14 +195,15 @@ class HomeView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final doctor = doctors[index];
                   return DoctorCard(
-                    name: doctor['name']!,
-                    specialty: doctor['specialty']!,
-                    imageUrl: doctor['imageUrl']!,
-                    phoneNumber: doctor['phoneNumber']!,
-                    about: doctor['about']!,
-                    address: doctor['address']!,
-                    workingTime: doctor['workingTime']!,
-                    services: doctor['services']!,
+                    name: doctor['name'],
+                    specialty: doctor['specialty'],
+                    imageUrl: doctor['imageUrl'],
+                    phoneNumber: doctor['phoneNumber'],
+                    about: doctor['about'],
+                    address: doctor['address'],
+                    workingTime: doctor['workingTime'],
+                    services: doctor['services'],
+                    availability: List<Map<String, String>>.from(doctor['availability']),
                   );
                 },
               ),
