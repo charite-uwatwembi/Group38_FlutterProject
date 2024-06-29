@@ -16,70 +16,64 @@ class SettingsView extends StatelessWidget {
           color: Colors.black, // Set the back button color to black
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
-            ),
-            SizedBox(height: 10),
-            Text(
-              'El Chico',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 5),
-            Text(
-              'Tjohnson@gmail.com',
-              style: TextStyle(color: Colors.grey),
-            ),
-            SizedBox(height: 20),
-            Divider(),
-            Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListTile(
-                      leading: Icon(Icons.description),
-                      title: Text('Terms & Conditions'),
-                      onTap: () {
-                        // Handle Terms & Conditions tap
-                      },
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.logout, color: Colors.red),
-                      title: Text('Logout', style: TextStyle(color: Colors.red)),
-                      onTap: () {
-                        // Handle Logout tap
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginView()),
-                        );
-                      },
-                    ),
-                  ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
+              ),
+              SizedBox(height: 10),
+              Text(
+                'El Chico',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Tjohnson@gmail.com',
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(height: 20),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.description),
+                title: Text('Terms & Conditions'),
+                onTap: () {
+                  // Handle Terms & Conditions tap
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout, color: Colors.red),
+                title: Text('Logout', style: TextStyle(color: Colors.red)),
+                onTap: () {
+                  // Handle Logout tap
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginView()),
+                  );
+                },
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FeedbackPage()),
+                  );
+                },
+                child: Text(
+                  'Leave us a feedback',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FeedbackPage()),
-                );
-              },
-              child: Text(
-                'Leave us a feedback',
-                style: TextStyle(
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
