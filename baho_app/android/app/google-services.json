@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "809855679062",
+    "project_id": "baho-app-df230",
+    "storage_bucket": "baho-app-df230.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809855679062:android:94903b0ff286c5052bd9f7",
+        "android_client_info": {
+          "package_name": "com.example.baho_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxKX2fyRoyUYMlSaMgegwbz__EUUuDBCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
