@@ -4,8 +4,13 @@ import 'consts/fonts.dart';
 import 'views/login_view/login_view.dart';
 import 'views/landing_view/landing_view.dart';
 import 'views/home_view/home_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main()async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
