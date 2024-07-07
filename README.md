@@ -4,7 +4,7 @@ Welcome to the Baho App, an innovative mobile application designed to simplify b
 
 ## Link to Demo
 
-[Link to Baho App video] (https://drive.google.com/file/d/19BRrx1YG57EmB0KYnsyHyTiuxF7RC6RI/view?usp=sharing&authuser=1)
+Link to Baho App Demo: (https://drive.google.com/file/d/19BRrx1YG57EmB0KYnsyHyTiuxF7RC6RI/view?usp=sharing&authuser=1)
 
 
 ## Introduction
