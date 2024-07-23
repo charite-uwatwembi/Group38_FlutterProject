@@ -14,6 +14,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.textController,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: widget.hint,

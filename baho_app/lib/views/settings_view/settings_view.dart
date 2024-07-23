@@ -1,10 +1,12 @@
+import 'package:baho_app/controllers/auth_controller.dart';
 import 'package:baho_app/views/landing_view/landing_view.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
-import 'package:baho_app/views/feedback_view/feedback_view.dart'; // Import the feedback page
+import 'package:baho_app/views/feedback_view/feedback_view.dart';
+import 'package:get/get.dart'; // Import the feedback page
 
 class SettingsView extends StatelessWidget {
   @override
@@ -51,11 +53,13 @@ class SettingsView extends StatelessWidget {
                 title: Text('Logout', style: TextStyle(color: Colors.red)),
                 onTap: () {
                   // Handle Logout tap
-                  Navigator.push(
-                    context,
-                    // MaterialPageRoute(builder: (context) => LoginView()),
-                    MaterialPageRoute(builder: (context) => LandingView()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   // MaterialPageRoute(builder: (context) => LoginView()),
+                  //   MaterialPageRoute(builder: (context) => LandingView()),
+                  // );
+                  AuthController().signout();
+                  Get.offAll(()=> LandingView());
                 },
               ),
               SizedBox(height: 20),

@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.baho_app"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34  // Updated this line
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
