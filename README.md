@@ -2,6 +2,10 @@
 
 Welcome to the Baho App, an innovative mobile application designed to simplify booking appointments with healthcare professionals in Rwanda.
 
+## Link to Demo
+
+Link to Baho App Demo: (https://drive.google.com/file/d/19BRrx1YG57EmB0KYnsyHyTiuxF7RC6RI/view?usp=sharing&authuser=1)
+
 
 ## Introduction
 
@@ -96,13 +100,6 @@ baho_app/
 └── README.md
 ```
 
-## Screenshots
-
-### LogIn Page
-![Login Screen](/baho_app/screenshots/login.png)
-### SignUp Page
-![Signup Screen](/baho_app/screenshots/signup.png)
-![Home Screen](screenshots/home_screen.png)
 
 ## Dependencies
 
