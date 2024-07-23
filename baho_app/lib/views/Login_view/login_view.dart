@@ -55,7 +55,8 @@ class LoginView extends StatelessWidget {
                         CustomButton(
                             buttonText: AppStrings.login, 
                             onTap: () {
-                              Get.to(() =>  LandingView());
+                              // Get.to(() =>  LandingView());
+                              Get.to(() =>  HomeView());
                             }),
                         20.0.heightBox,
                         Row(

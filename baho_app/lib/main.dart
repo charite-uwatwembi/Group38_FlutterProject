@@ -7,12 +7,16 @@ import 'views/home_view/home_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-void main()async {
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,7 +26,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: AppFonts.nunito),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/LoginView',
+      // initialRoute: '/LoginView',
+      initialRoute: '/LandingView',
       getPages: [
         GetPage(name: '/LoginView', page: () => LoginView()),
         GetPage(name: '/LandingView', page: () => LandingView()),

@@ -1,3 +1,4 @@
+import 'package:baho_app/views/landing_view/landing_view.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
@@ -52,7 +53,8 @@ class SettingsView extends StatelessWidget {
                   // Handle Logout tap
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginView()),
+                    // MaterialPageRoute(builder: (context) => LoginView()),
+                    MaterialPageRoute(builder: (context) => LandingView()),
                   );
                 },
               ),
