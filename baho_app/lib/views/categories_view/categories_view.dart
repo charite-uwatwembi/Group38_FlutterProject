@@ -1,5 +1,5 @@
-import 'package:baho_app/consts/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart'; // Import the AppointmentsView
@@ -10,7 +10,7 @@ class TotalCategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Total Category', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
@@ -20,11 +20,11 @@ class TotalCategoryPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
+          crossAxisSpacing: 16.0,
+          mainAxisSpacing: 16.0,
           children: [
             CategoryCard(
               icon: Icons.person,
@@ -56,12 +56,25 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Dental',
               specialists: 5,
             ),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'View All',
+                style: TextStyle(
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: Colors.grey,
         onTap: (index) {
           if (index == 0) {
             Navigator.push(
@@ -79,8 +92,6 @@ class TotalCategoryPage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => SettingsView()),
             );
           }
-          
-          // Add more conditions for other indices if needed
         },
         items: [
           BottomNavigationBarItem(
@@ -115,30 +126,33 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.blue[300],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 50, color: Colors.white),
-          SizedBox(height: 10),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40, color: AppColors.primaryColor),
+            SizedBox(height: 10),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
-          ),
-          SizedBox(height: 5),
-          Text(
-            '$specialists specialists',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
+            SizedBox(height: 5),
+            Text(
+              '$specialists specialists',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black54,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
