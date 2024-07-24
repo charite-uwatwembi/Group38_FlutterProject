@@ -1,15 +1,20 @@
+import 'package:baho_app/controllers/setting_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/doctor_view/doctor_card.dart';
 import 'package:baho_app/consts/consts.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
+import 'package:get/get.dart';
+import 'package:baho_app/controllers/setting_controller.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key});
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final SettingController settingController = Get.put(SettingController());
+
     final List<Map<String, dynamic>> doctors = [
       {
         'name': 'Dr Alex',
@@ -146,15 +151,21 @@ class HomeView extends StatelessWidget {
         iconTheme: IconThemeData(
           color: AppColors.bgColor,
         ),
-        title: Row(
-          children: [
-            SizedBox(width: 10),
-            Text(
-              "Welcome Dear Patient",
-              style: TextStyle(color: AppColors.bgColor),
-            ),
-          ],
-        ),
+        title: Obx(() {
+          if (settingController.isLoading.value) {
+            return CircularProgressIndicator();
+          } else {
+            return Row(
+              children: [
+                SizedBox(width: 10),
+                Text(
+                  "Welcome ${settingController.username.value}",
+                  style: TextStyle(color: AppColors.bgColor),
+                ),
+              ],
+            );
+          }
+        }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
