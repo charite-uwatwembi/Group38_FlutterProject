@@ -1,4 +1,5 @@
 import 'package:baho_app/controllers/auth_controller.dart';
+import 'package:baho_app/controllers/setting_controller.dart';
 import 'package:baho_app/views/landing_view/landing_view.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/home_view/home_view.dart';
@@ -6,9 +7,12 @@ import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/feedback_view/feedback_view.dart';
-import 'package:get/get.dart'; // Import the feedback page
+import 'package:get/get.dart';
+import 'package:baho_app/controllers/setting_controller.dart'; // Import the settings controller
 
 class SettingsView extends StatelessWidget {
+  final SettingController settingController = Get.put(SettingController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,69 +23,69 @@ class SettingsView extends StatelessWidget {
           color: Colors.black, // Set the back button color to black
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              SizedBox(height: 20),
-              CircleAvatar(
-                radius: 100,
-                backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
-              ),
-              SizedBox(height: 10),
-              Text(
-                'El Chico',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 5),
-              Text(
-                'Tjohnson@gmail.com',
-                style: TextStyle(color: Colors.grey),
-              ),
-              SizedBox(height: 20),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.description),
-                title: Text('Terms & Conditions'),
-                onTap: () {
-                  // Handle Terms & Conditions tap
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.logout, color: Colors.red),
-                title: Text('Logout', style: TextStyle(color: Colors.red)),
-                onTap: () {
-                  // Handle Logout tap
-                  // Navigator.push(
-                  //   context,
-                  //   // MaterialPageRoute(builder: (context) => LoginView()),
-                  //   MaterialPageRoute(builder: (context) => LandingView()),
-                  // );
-                  AuthController().signout();
-                  Get.offAll(()=> LandingView());
-                },
-              ),
-              SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FeedbackPage()),
-                  );
-                },
-                child: Text(
-                  'Leave us a feedback',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
+      body: Obx(() {
+        if (settingController.isLoading.value) {
+          return Center(child: CircularProgressIndicator());
+        } else {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  CircleAvatar(
+                    radius: 100,
+                    backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
                   ),
-                ),
+                  SizedBox(height: 10),
+                  Text(
+                    settingController.username.value,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    settingController.email.value,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(height: 20),
+                  Divider(),
+                  ListTile(
+                    leading: Icon(Icons.description),
+                    title: Text('Terms & Conditions'),
+                    onTap: () {
+                      // Handle Terms & Conditions tap
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.logout, color: Colors.red),
+                    title: Text('Logout', style: TextStyle(color: Colors.red)),
+                    onTap: () {
+                      AuthController().signout();
+                      Get.offAll(() => LandingView());
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FeedbackPage()),
+                      );
+                    },
+                    child: Text(
+                      'Leave us a feedback',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          );
+        }
+      }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 3,
         type: BottomNavigationBarType.fixed,
