@@ -23,7 +23,7 @@ class FeedbackPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 100, // Adjust height to position avatar
+                  height: 100, // Adjust height  position of the  avatar
                 ),
                 Positioned(
                   top: 30, // Adjust to move avatar up or down
