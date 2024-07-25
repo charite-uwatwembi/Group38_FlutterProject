@@ -11,7 +11,7 @@ class FeedbackPage extends StatelessWidget {
         title: Text('FeedBack', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
         iconTheme: IconThemeData(
-          color: Colors.white, // Set the back button color to white
+          color: Colors.white, // Set the back button color
         ),
       ),
       body: SingleChildScrollView(
@@ -23,21 +23,22 @@ class FeedbackPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 100, // Adjust height to position avatar
-                  
+                  height: 100, // Adjust height  position of the  avatar
                 ),
                 Positioned(
                   top: 30, // Adjust to move avatar up or down
                   child: CircleAvatar(
                     radius: 80,
-                    backgroundImage: AssetImage('assets/images/logo.png'), // Replace with your logo path
+                    backgroundImage: AssetImage(
+                        'assets/images/logo.png'), // Replace with your logo path
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 100), // Adjust to fit avatar
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(108, 168, 211, 236), // Skyblue background color
+                    color: Color.fromARGB(
+                        108, 168, 211, 236), // Skyblue background color
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
@@ -51,35 +52,42 @@ class FeedbackPage extends StatelessWidget {
                         SizedBox(height: 20), // Adjust to fit avatar
                         Text(
                           'Baho',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.w900),
                         ),
                         SizedBox(height: 20),
                         Text(
                           'Rate your experience :)',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             IconButton(
-                              icon: Icon(Icons.sentiment_very_satisfied, color: Colors.orange, size: 30),
+                              icon: Icon(Icons.sentiment_very_satisfied,
+                                  color: Colors.orange, size: 30),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.sentiment_satisfied, color: Colors.orange, size: 30),
+                              icon: Icon(Icons.sentiment_satisfied,
+                                  color: Colors.orange, size: 30),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.sentiment_neutral, color: Colors.orange, size: 30),
+                              icon: Icon(Icons.sentiment_neutral,
+                                  color: Colors.orange, size: 30),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.sentiment_dissatisfied, color: Colors.orange, size: 30),
+                              icon: Icon(Icons.sentiment_dissatisfied,
+                                  color: Colors.orange, size: 30),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.sentiment_very_dissatisfied, color: Colors.orange, size: 30),
+                              icon: Icon(Icons.sentiment_very_dissatisfied,
+                                  color: Colors.orange, size: 30),
                               onPressed: () {},
                             ),
                           ],
@@ -89,7 +97,8 @@ class FeedbackPage extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Comments:',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                         TextField(
@@ -105,7 +114,8 @@ class FeedbackPage extends StatelessWidget {
                             onPressed: () {
                               // Handle Submit
                             },
-                            child: Text('Submit', style: TextStyle(color: Colors.white)),
+                            child: Text('Submit',
+                                style: TextStyle(color: Colors.white)),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,
                               minimumSize: Size(150, 40),
@@ -117,10 +127,13 @@ class FeedbackPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => HomeView()), // Replace with your HomeView
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeView()), // Replace with your HomeView
                             );
                           },
-                          child: Text('Home', style: TextStyle(color: Colors.white)),
+                          child: Text('Home',
+                              style: TextStyle(color: Colors.white)),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue,
                             minimumSize: Size(250, 40),

@@ -58,8 +58,7 @@ class LandingView extends StatelessWidget {
                 CustomButton(
                   buttonText: AppStrings.start,
                   onTap: () {
-                    print("Button Pressed"); // Debug statement
-                    // Get.toNamed('/HomeView');
+                    print("Button Pressed");
                     Get.toNamed('/LoginView');
                   },
                 ),

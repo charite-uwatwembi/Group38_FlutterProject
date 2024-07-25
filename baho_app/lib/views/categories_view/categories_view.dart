@@ -15,7 +15,7 @@ class TotalCategoryPage extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Navigator.pop(context); // Go back to the previous screen
+            Navigator.pop(context); // Go back  the previous page
           },
         ),
       ),
@@ -121,7 +121,8 @@ class CategoryCard extends StatelessWidget {
   final String label;
   final int specialists;
 
-  CategoryCard({required this.icon, required this.label, required this.specialists});
+  CategoryCard(
+      {required this.icon, required this.label, required this.specialists});
 
   @override
   Widget build(BuildContext context) {
