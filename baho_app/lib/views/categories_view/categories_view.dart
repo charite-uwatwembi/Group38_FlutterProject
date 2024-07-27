@@ -15,7 +15,7 @@ class TotalCategoryPage extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            Navigator.pop(context); // Go back  the previous page
+            Navigator.pop(context);
           },
         ),
       ),
@@ -57,16 +57,6 @@ class TotalCategoryPage extends StatelessWidget {
               specialists: 5,
             ),
             SizedBox(height: 10),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'View All',
-                style: TextStyle(
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
           ],
         ),
       ),
