@@ -26,6 +26,7 @@ class TotalCategoryPage extends StatelessWidget {
           crossAxisSpacing: 16.0,
           mainAxisSpacing: 16.0,
           children: [
+            // general interan medicine  doctor card
             CategoryCard(
               icon: Icons.person,
               label: 'Body',
