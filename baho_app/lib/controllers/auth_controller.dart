@@ -41,6 +41,7 @@ class AuthController extends GetxController {
     await store.set({'fullname': fullname, 'email': email});
   }
 
+//signout asynchrous function
   signout() async {
     await FirebaseAuth.instance.signOut();
   }
