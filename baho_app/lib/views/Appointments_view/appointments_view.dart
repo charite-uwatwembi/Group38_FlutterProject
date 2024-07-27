@@ -113,7 +113,7 @@ class AppointmentsView extends StatelessWidget {
           } else if (index == 2) {
             // Already on AppointmentsView, do nothing
           } else if (index == 3) {
-            // Navigate to SettingsView
+            
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => SettingsView()),
