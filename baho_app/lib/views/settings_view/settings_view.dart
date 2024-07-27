@@ -20,7 +20,7 @@ class SettingsView extends StatelessWidget {
         title: Text('Settings', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
-          color: Colors.black, // Set the back button color to black
+          color: Colors.black,
         ),
       ),
       body: Obx(() {
@@ -35,7 +35,7 @@ class SettingsView extends StatelessWidget {
                   SizedBox(height: 20),
                   CircleAvatar(
                     radius: 100,
-                    backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
+                    backgroundImage: AssetImage('assets/images/chico.jpg'),
                   ),
                   SizedBox(height: 10),
                   Text(
