@@ -26,7 +26,8 @@ class AppointmentsView extends StatelessWidget {
         ),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('appointments').snapshots(),
+        stream:
+            FirebaseFirestore.instance.collection('appointments').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -38,13 +39,14 @@ class AppointmentsView extends StatelessWidget {
             return Center(child: Text('No appointments found'));
           }
 
-          final List<Map<String, String>> appointments = snapshot.data!.docs.map((doc) {
+          final List<Map<String, String?>> appointments =
+              snapshot.data!.docs.map((doc) {
             final data = doc.data() as Map<String, dynamic>;
             return {
-              'name': data['doctorName']?.toString() ?? 'Unknown',
-              'time': data['time']?.toString() ?? 'Unknown',
-              'date': data['date']?.toString() ?? 'Unknown',
-              'imageUrl': data['doctorImageUrl']?.toString() ?? 'assets/images/default.png',
+              'name': data['doctorName']?.toString(),
+              'time': data['time']?.toString(),
+              'date': data['date']?.toString(),
+              'imageUrl': data['doctorImageUrl']?.toString(),
             };
           }).toList();
 
@@ -58,20 +60,25 @@ class AppointmentsView extends StatelessWidget {
             itemBuilder: (context, index) {
               final appointment = appointments[index];
               return ListTile(
-                contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 leading: CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage(appointment['imageUrl']!),
+                  backgroundImage: appointment['imageUrl'] != null &&
+                          appointment['imageUrl']!.startsWith('http')
+                      ? NetworkImage(appointment['imageUrl']!)
+                      : AssetImage(appointment['imageUrl'] ??
+                          'assets/images/default.png') as ImageProvider,
                 ),
                 title: Text(
-                  appointment['name']!,
+                  appointment['name'] ?? 'Unknown',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(appointment['time']!),
-                    Text(appointment['date']!),
+                    Text(appointment['time'] ?? 'Unknown'),
+                    Text(appointment['date'] ?? 'Unknown'),
                   ],
                 ),
               );
@@ -110,7 +117,6 @@ class AppointmentsView extends StatelessWidget {
             );
           } else if (index == 2) {
           } else if (index == 3) {
-            
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => SettingsView()),
