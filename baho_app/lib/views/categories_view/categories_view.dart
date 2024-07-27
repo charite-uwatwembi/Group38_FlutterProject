@@ -36,6 +36,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Ear',
               specialists: 8,
             ),
+            // lungs doctor card
             CategoryCard(
               icon: Icons.air,
               label: 'Lungs',
