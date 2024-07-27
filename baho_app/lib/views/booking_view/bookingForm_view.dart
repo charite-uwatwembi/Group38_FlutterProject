@@ -86,12 +86,10 @@ class _BookingFormPageState extends State<BookingFormPage> {
     };
 
     try {
-      // Save appointment to Firestore
       await FirebaseFirestore.instance
           .collection('appointments')
           .add(appointment);
-
-      // Convert the appointment map to a map of strings
+          
       final appointmentStringMap =
           appointment.map((key, value) => MapEntry(key, value.toString()));
 
