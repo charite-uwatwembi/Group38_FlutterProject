@@ -63,7 +63,7 @@ class _BookingFormPageState extends State<BookingFormPage> {
         _nameController.text.isEmpty ||
         _mobileController.text.isEmpty ||
         _problemController.text.isEmpty) {
-      // Show an error message if any field is empty
+      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             content: Text('Please fill all fields and select date & time')),
@@ -89,11 +89,10 @@ class _BookingFormPageState extends State<BookingFormPage> {
       await FirebaseFirestore.instance
           .collection('appointments')
           .add(appointment);
-          
+
       final appointmentStringMap =
           appointment.map((key, value) => MapEntry(key, value.toString()));
 
-      // Navigate to AppointmentsView with the new appointment data
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
