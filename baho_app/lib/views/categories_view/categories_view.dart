@@ -63,7 +63,7 @@ class TotalCategoryPage extends StatelessWidget {
             ),
             CategoryCard(
               icon: Icons.person,
-              label: 'Body',
+              label: 'Neurology',
               specialists: 25,
             ),
             SizedBox(height: 10),
