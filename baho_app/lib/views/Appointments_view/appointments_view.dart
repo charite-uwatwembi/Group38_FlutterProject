@@ -104,7 +104,7 @@ class AppointmentsView extends StatelessWidget {
         onTap: (index) {
           // Navigate to different views based on the selected index
           if (index == 0) {
-            Navigator.pop(context); // Go back to HomeView
+            Navigator.pop(context);
           } else if (index == 1) {
             Navigator.pushReplacement(
               context,
