@@ -32,6 +32,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Body',
               specialists: 25,
             ),
+            // Eear speacialist doctor
             CategoryCard(
               icon: Icons.hearing,
               label: 'Ear',
