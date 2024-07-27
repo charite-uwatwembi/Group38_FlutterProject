@@ -67,6 +67,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'psychology',
               specialists: 25,
             ),
+            // Neurologist   card
             CategoryCard(
               icon: Icons.biotech,
               label: 'Neurology',
