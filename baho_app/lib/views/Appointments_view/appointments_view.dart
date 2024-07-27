@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
 import 'package:baho_app/consts/consts.dart';
@@ -10,62 +11,6 @@ class AppointmentsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> appointments = [
-      {
-        'name': 'Dr John',
-        'time': '9-AM to 12 PM',
-        'date': '2024-06-21',
-        'imageUrl': 'assets/images/jean.png',
-      },
-      {
-        'name': 'Dr Joseph',
-        'time': '9-AM to 12 PM',
-        'date': '2024-06-22',
-        'imageUrl': 'assets/images/doctor1.jpeg',
-      },
-      {
-        'name': 'Dr Michael',
-        'time': '11-AM to 17 PM',
-        'date': '2024-06-23',
-        'imageUrl': 'assets/images/doctor2.jpeg',
-      },
-      {
-        'name': 'Dr Aime',
-        'time': '9-PM to 6-AM',
-        'date': '2024-06-24',
-        'imageUrl': 'assets/images/doctor3.jpeg',
-      },
-      {
-        'name': 'Dr Leon',
-        'time': '9-AM to 12 PM',
-        'date': '2024-06-25',
-        'imageUrl': 'assets/images/doctor4.jpeg',
-      },
-      {
-        'name': 'Ariane',
-        'time': '5-PM to 9 PM',
-        'date': '2024-06-26',
-        'imageUrl': 'assets/images/ariane.jpeg',
-      },
-      {
-        'name': 'Dr Sarah',
-        'time': '5-PM to 9 PM',
-        'date': '2024-06-27',
-        'imageUrl': 'assets/images/jeanne.png',
-      },
-      {
-        'name': 'Dr Alex',
-        'time': '5-PM to 9 PM',
-        'date': '2024-06-28',
-        'imageUrl': 'assets/images/Alex.png',
-      },
-    ];
-
-    // Add the new appointment if it exists
-    if (newAppointment != null) {
-      appointments.add(newAppointment!);
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -80,28 +25,58 @@ class AppointmentsView extends StatelessWidget {
           },
         ),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.all(8.0),
-        itemCount: appointments.length,
-        itemBuilder: (context, index) {
-          final appointment = appointments[index];
-          return ListTile(
-            contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage(appointment['imageUrl']!),
-            ),
-            title: Text(
-              appointment['name']!,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(appointment['time']!),
-                Text(appointment['date']!),
-              ],
-            ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('appointments').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Something went wrong'));
+          }
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return Center(child: Text('No appointments found'));
+          }
+
+          final List<Map<String, String>> appointments = snapshot.data!.docs.map((doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            return {
+              'name': data['doctorName']?.toString() ?? 'Unknown',
+              'time': data['time']?.toString() ?? 'Unknown',
+              'date': data['date']?.toString() ?? 'Unknown',
+              'imageUrl': data['doctorImageUrl']?.toString() ?? 'assets/images/default.png',
+            };
+          }).toList();
+
+          // Add the new appointment if it exists
+          if (newAppointment != null) {
+            appointments.add(newAppointment!);
+          }
+
+          return ListView.builder(
+            padding: EdgeInsets.all(8.0),
+            itemCount: appointments.length,
+            itemBuilder: (context, index) {
+              final appointment = appointments[index];
+              return ListTile(
+                contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage(appointment['imageUrl']!),
+                ),
+                title: Text(
+                  appointment['name']!,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(appointment['time']!),
+                    Text(appointment['date']!),
+                  ],
+                ),
+              );
+            },
           );
         },
       ),

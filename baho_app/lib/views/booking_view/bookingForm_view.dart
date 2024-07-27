@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:baho_app/views/Appointments_view/appointments_view.dart';
 
@@ -5,9 +6,11 @@ class BookingFormPage extends StatefulWidget {
   final String doctorName;
   final String doctorImageUrl;
 
-  const BookingFormPage(
-      {Key? key, required this.doctorName, required this.doctorImageUrl})
-      : super(key: key);
+  const BookingFormPage({
+    Key? key,
+    required this.doctorName,
+    required this.doctorImageUrl,
+  }) : super(key: key);
 
   @override
   _BookingFormPageState createState() => _BookingFormPageState();
@@ -44,6 +47,53 @@ class _BookingFormPageState extends State<BookingFormPage> {
       });
   }
 
+  Future<void> _bookAppointment() async {
+    if (_selectedDate == null ||
+        _selectedTime == null ||
+        _nameController.text.isEmpty ||
+        _mobileController.text.isEmpty ||
+        _problemController.text.isEmpty) {
+      // Show an error message if any field is empty
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill all fields and select date & time')),
+      );
+      return;
+    }
+
+    // Create an appointment map
+    final appointment = {
+      'doctorName': widget.doctorName,
+      'doctorImageUrl': widget.doctorImageUrl,
+      'patientName': _nameController.text,
+      'mobileNumber': _mobileController.text,
+      'problem': _problemController.text,
+      'date': _selectedDate!.toIso8601String(),
+      'time': _selectedTime!.format(context),
+      'createdAt': FieldValue.serverTimestamp(),
+    };
+
+    try {
+      // Save appointment to Firestore
+      await FirebaseFirestore.instance.collection('appointments').add(appointment);
+
+      // Convert the appointment map to a map of strings
+      final appointmentStringMap = appointment.map((key, value) => MapEntry(key, value.toString()));
+
+      // Navigate to AppointmentsView with the new appointment data
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AppointmentsView(newAppointment: appointmentStringMap),
+        ),
+      );
+    } catch (e) {
+      // Show an error message if something goes wrong
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to book appointment: $e')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +101,7 @@ class _BookingFormPageState extends State<BookingFormPage> {
         backgroundColor: Colors.blue,
         iconTheme: IconThemeData(color: Colors.white),
         titleTextStyle: TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         title: Text(widget.doctorName),
       ),
       body: SingleChildScrollView(
@@ -155,29 +205,8 @@ class _BookingFormPageState extends State<BookingFormPage> {
             SizedBox(height: 16),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // Handling the appointment logic
-                  final newAppointment = {
-                    'name': widget.doctorName,
-                    'time': _selectedTime != null
-                        ? _selectedTime!.format(context)
-                        : 'Time not selected',
-                    'date': _selectedDate != null
-                        ? _selectedDate!.toLocal().toString().split(' ')[0]
-                        : 'Date not selected',
-                    'imageUrl': widget.doctorImageUrl,
-                  };
-
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          AppointmentsView(newAppointment: newAppointment),
-                    ),
-                  );
-                },
-                child: Text('Confirm Appointment',
-                    style: TextStyle(color: Colors.white)),
+                onPressed: _bookAppointment,
+                child: Text('Confirm Appointment', style: TextStyle(color: Colors.white)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),
