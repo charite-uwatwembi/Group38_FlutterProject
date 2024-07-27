@@ -155,7 +155,6 @@ class DoctorProfilePage extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle booking functionality
                     Navigator.push(
                       context,
                       MaterialPageRoute(
