@@ -111,7 +111,6 @@ class AppointmentsView extends StatelessWidget {
               MaterialPageRoute(builder: (context) => TotalCategoryPage()),
             );
           } else if (index == 2) {
-            // Already on AppointmentsView, do nothing
           } else if (index == 3) {
             
             Navigator.pushReplacement(
