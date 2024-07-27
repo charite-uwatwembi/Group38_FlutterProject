@@ -53,7 +53,7 @@ class SettingsView extends StatelessWidget {
                     leading: Icon(Icons.description),
                     title: Text('Terms & Conditions'),
                     onTap: () {
-                      // Handle Terms & Conditions tap
+                      
                     },
                   ),
                   ListTile(
