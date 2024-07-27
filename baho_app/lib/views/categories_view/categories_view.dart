@@ -50,6 +50,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Kidneys',
               specialists: 10,
             ),
+            // Heart specialist card
             CategoryCard(
               icon: Icons.favorite,
               label: 'Heart',
