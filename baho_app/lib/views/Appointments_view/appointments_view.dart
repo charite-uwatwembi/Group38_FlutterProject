@@ -40,10 +40,12 @@ class AppointmentsView extends StatelessWidget {
 
           final List<Map<String, String>> appointments = snapshot.data!.docs.map((doc) {
             final data = doc.data() as Map<String, dynamic>;
+            print("Fetched data: $data"); // Debug print to check data
+
             return {
               'name': data['doctorName']?.toString() ?? 'Unknown',
-              'time': data['time']?.toString() ?? 'Unknown',
-              'date': data['date']?.toString() ?? 'Unknown',
+              'time': data['appointmentTime']?.toString() ?? 'Unknown',
+              'date': data['appointmentDate']?.toString() ?? 'Unknown',
               'imageUrl': data['doctorImageUrl']?.toString() ?? 'assets/images/default.png',
             };
           }).toList();
@@ -58,11 +60,15 @@ class AppointmentsView extends StatelessWidget {
             itemCount: appointments.length,
             itemBuilder: (context, index) {
               final appointment = appointments[index];
+              print("Appointment: $appointment"); // Debug print to check appointment data
+
               return ListTile(
                 contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 leading: CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage(appointment['imageUrl']!),
+                  backgroundImage: appointment['imageUrl']!.startsWith('assets/')
+                      ? AssetImage(appointment['imageUrl']!)
+                      : NetworkImage(appointment['imageUrl']!) as ImageProvider,
                 ),
                 title: Text(
                   appointment['name']!,

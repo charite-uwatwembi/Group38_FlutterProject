@@ -1,12 +1,13 @@
-import 'package:baho_app/controllers/setting_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:baho_app/views/doctor_view/doctor_card.dart';
+import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:baho_app/consts/consts.dart';
+import 'package:baho_app/controllers/setting_controller.dart';
+import 'package:baho_app/services/firestore_service.dart';
+import 'package:baho_app/views/doctor_view/doctor_card.dart';
 import 'package:baho_app/views/categories_view/categories_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/settings_view/settings_view.dart';
-import 'package:get/get.dart';
-import 'package:baho_app/controllers/setting_controller.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -14,136 +15,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingController settingController = Get.put(SettingController());
-
-    final List<Map<String, dynamic>> doctors = [
-      {
-        'name': 'Dr Alex',
-        'specialty': 'Neurologist',
-        'imageUrl': 'assets/images/Alex.png',
-        'phoneNumber': '+250787118178',
-        'about': 'Neurologist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Neurology, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr Sarah',
-        'specialty': 'Cardiologist',
-        'imageUrl': 'assets/images/jeanne.png',
-        'phoneNumber': '+250787118178',
-        'about': 'Cardiologist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Cardiology, Family physician',
-        'availability': [
-          {'time': '9:00 AM', 'status': 'available'},
-          {'time': '10:00 AM', 'status': 'available'},
-          {'time': '11:00 AM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr John',
-        'specialty': 'Orthopedist',
-        'imageUrl': 'assets/images/jean.png',
-        'phoneNumber': '+250787118178',
-        'about': 'Orthopedist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Orthopedics, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr Joseph',
-        'specialty': 'Pediatrician',
-        'imageUrl': 'assets/images/doctor1.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Pediatrics, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr Michael',
-        'specialty': 'Dermatology',
-        'imageUrl': 'assets/images/doctor2.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Dermatologist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Dermatology, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'boked'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'available'},
-        ],
-      },
-      {
-        'name': 'Dr Leon',
-        'specialty': 'Psychiatrist',
-        'imageUrl': 'assets/images/doctor4.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Psychiatrist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Psychiatry, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'available'},
-        ],
-      },
-      {
-        'name': 'Dr Benoit',
-        'specialty': 'Dentist',
-        'imageUrl': 'assets/images/doctor5.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Dentist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Dentistry, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr Ariane',
-        'specialty': 'Pediatrician',
-        'imageUrl': 'assets/images/ariane.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Pediatrician for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Pediatrics, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-      {
-        'name': 'Dr Aime',
-        'specialty': 'Internist',
-        'imageUrl': 'assets/images/doctor3.jpeg',
-        'phoneNumber': '+250787118178',
-        'about': 'Internist for 10 years, worked in USA and Rwanda',
-        'address': 'Kigali, Rwanda',
-        'workingTime': '9-AM to 4-PM',
-        'services': 'Interns, Family physician',
-        'availability': [
-          {'time': '9:00 AM - 12:00 PM', 'status': 'available'},
-          {'time': '12:00 AM - 3:00 PM', 'status': 'booked'},
-        ],
-      },
-    ];
+    final FirestoreService firestoreService = FirestoreService();
 
     return Scaffold(
       appBar: AppBar(
@@ -195,41 +67,55 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 0.75,
-                ),
-                itemCount: doctors.length,
-                itemBuilder: (context, index) {
-                  final doctor = doctors[index];
-                  return DoctorCard(
-                    name: doctor['name'],
-                    specialty: doctor['specialty'],
-                    imageUrl: doctor['imageUrl'],
-                    phoneNumber: doctor['phoneNumber'],
-                    about: doctor['about'],
-                    address: doctor['address'],
-                    workingTime: doctor['workingTime'],
-                    services: doctor['services'],
-                    availability: List<Map<String, String>>.from(doctor['availability']),
+              child: StreamBuilder<List<Map<String, dynamic>>>(
+                stream: firestoreService.getDoctors(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('No doctors available'));
+                  }
+
+                  final doctors = snapshot.data!;
+
+                  return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: 0.75,
+                    ),
+                    itemCount: doctors.length,
+                    itemBuilder: (context, index) {
+                      final doctor = doctors[index];
+                      return DoctorCard(
+                        name: doctor['name'] ?? 'No name',
+                        specialty: doctor['specialty'] ?? 'No specialty',
+                        imageUrl: doctor['imageUrl'] ?? 'assets/default.png',
+                        phoneNumber: doctor['phoneNumber'] ?? 'No phone',
+                        about: doctor['about'] ?? 'No about',
+                        address: doctor['address'] ?? 'No address',
+                        workingTime: doctor['workingTime'] ?? 'No working time',
+                        services: doctor['services'] ?? 'No services',
+                        availability: List<Map<String, dynamic>>.from(doctor['availability'] ?? []),
+                      );
+                    },
                   );
                 },
               ),
             ),
-            SizedBox(height: 10),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'View All',
-                style: TextStyle(
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
+            // SizedBox(height: 10),
+            // TextButton(
+            //   onPressed: () {},
+            //   child: Text(
+            //     'View All',
+            //     style: TextStyle(
+            //       color: Colors.blue,
+            //       decoration: TextDecoration.underline,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

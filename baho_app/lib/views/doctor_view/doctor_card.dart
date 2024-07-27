@@ -10,7 +10,7 @@ class DoctorCard extends StatelessWidget {
   final String address;
   final String workingTime;
   final String services;
-  final List<Map<String, String>> availability;
+  final List<Map<String, dynamic>> availability; // Changed to dynamic
 
   const DoctorCard({
     Key? key,
@@ -22,7 +22,7 @@ class DoctorCard extends StatelessWidget {
     required this.address,
     required this.workingTime,
     required this.services,
-    this.availability = const [],
+    required this.availability,
   }) : super(key: key);
 
   @override

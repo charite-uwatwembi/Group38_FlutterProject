@@ -12,7 +12,7 @@ class DoctorProfilePage extends StatelessWidget {
   final String address;
   final String workingTime;
   final String services;
-  final List<Map<String, String>> availability;
+  final List<Map<String, dynamic>> availability; // Change to dynamic
 
   const DoctorProfilePage({
     Key? key,
@@ -35,8 +35,11 @@ class DoctorProfilePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         iconTheme: IconThemeData(color: Colors.white),
-        titleTextStyle:
-            TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
         title: Text(name),
       ),
       body: Padding(
