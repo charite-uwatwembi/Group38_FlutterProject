@@ -56,6 +56,16 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Dental',
               specialists: 5,
             ),
+            CategoryCard(
+              icon: Icons.person,
+              label: 'psychology',
+              specialists: 25,
+            ),
+            CategoryCard(
+              icon: Icons.person,
+              label: 'Body',
+              specialists: 25,
+            ),
             SizedBox(height: 10),
           ],
         ),
