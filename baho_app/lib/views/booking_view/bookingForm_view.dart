@@ -72,8 +72,7 @@ class _BookingFormPageState extends State<BookingFormPage> {
     }
 
     // Create an appointment map
-
-    // Update the placeholder image reference
+  
     final appointment = {
       'doctorName': widget.doctorName,
       'doctorImageUrl': widget.doctorImageUrl,
