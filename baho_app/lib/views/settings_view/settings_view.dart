@@ -8,7 +8,7 @@ import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/feedback_view/feedback_view.dart';
 import 'package:get/get.dart';
-import 'package:baho_app/controllers/setting_controller.dart'; // Import the settings controller
+import 'package:baho_app/controllers/setting_controller.dart';
 
 class SettingsView extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
