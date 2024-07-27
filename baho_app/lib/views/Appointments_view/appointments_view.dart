@@ -81,7 +81,7 @@ class AppointmentsView extends StatelessWidget {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2, // Set the current index to Appointments
+        currentIndex: 2,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
