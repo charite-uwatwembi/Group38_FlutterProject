@@ -44,6 +44,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Lungs',
               specialists: 13,
             ),
+            // Kidney doctor specialist
             CategoryCard(
               icon: Icons.bubble_chart,
               label: 'Kidneys',
@@ -54,6 +55,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Heart',
               specialists: 13,
             ),
+            // Dental specialist doctor
             CategoryCard(
               icon: Icons.health_and_safety,
               label: 'Dental',
