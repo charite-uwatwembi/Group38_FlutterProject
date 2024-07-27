@@ -56,6 +56,7 @@ class TotalCategoryPage extends StatelessWidget {
               label: 'Dental',
               specialists: 5,
             ),
+            //  psychology doctor card
             CategoryCard(
               icon: Icons.psychology,
               label: 'psychology',
