@@ -8,7 +8,7 @@ import 'package:baho_app/views/login_view/login_view.dart';
 import 'package:baho_app/views/appointments_view/appointments_view.dart';
 import 'package:baho_app/views/feedback_view/feedback_view.dart';
 import 'package:get/get.dart';
-import 'package:baho_app/controllers/setting_controller.dart'; // Import the settings controller
+import 'package:baho_app/controllers/setting_controller.dart';
 
 class SettingsView extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
@@ -20,7 +20,7 @@ class SettingsView extends StatelessWidget {
         title: Text('Settings', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
-          color: Colors.black, // Set the back button color to black
+          color: Colors.black,
         ),
       ),
       body: Obx(() {
@@ -35,7 +35,7 @@ class SettingsView extends StatelessWidget {
                   SizedBox(height: 20),
                   CircleAvatar(
                     radius: 100,
-                    backgroundImage: AssetImage('assets/images/chico.jpg'), // Replace with the correct image path
+                    backgroundImage: AssetImage('assets/images/chico.jpg'),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -53,7 +53,7 @@ class SettingsView extends StatelessWidget {
                     leading: Icon(Icons.description),
                     title: Text('Terms & Conditions'),
                     onTap: () {
-                      // Handle Terms & Conditions tap
+                      
                     },
                   ),
                   ListTile(

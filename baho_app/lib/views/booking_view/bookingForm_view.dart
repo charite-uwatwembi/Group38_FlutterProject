@@ -23,6 +23,14 @@ class _BookingFormPageState extends State<BookingFormPage> {
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _problemController = TextEditingController();
 
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _mobileController.dispose();
+    _problemController.dispose();
+    super.dispose();
+  }
+
   void _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -30,10 +38,11 @@ class _BookingFormPageState extends State<BookingFormPage> {
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
-    if (pickedDate != null && pickedDate != _selectedDate)
+    if (pickedDate != null) {
       setState(() {
         _selectedDate = pickedDate;
       });
+    }
   }
 
   void _selectTime(BuildContext context) async {
@@ -41,10 +50,11 @@ class _BookingFormPageState extends State<BookingFormPage> {
       context: context,
       initialTime: TimeOfDay.now(),
     );
-    if (pickedTime != null && pickedTime != _selectedTime)
+    if (pickedTime != null) {
       setState(() {
         _selectedTime = pickedTime;
       });
+    }
   }
 
   Future<void> _bookAppointment() async {
@@ -53,14 +63,16 @@ class _BookingFormPageState extends State<BookingFormPage> {
         _nameController.text.isEmpty ||
         _mobileController.text.isEmpty ||
         _problemController.text.isEmpty) {
-      // Show an error message if any field is empty
+      
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill all fields and select date & time')),
+        SnackBar(
+            content: Text('Please fill all fields and select date & time')),
       );
       return;
     }
 
     // Create an appointment map
+  
     final appointment = {
       'doctorName': widget.doctorName,
       'doctorImageUrl': widget.doctorImageUrl,
@@ -73,17 +85,18 @@ class _BookingFormPageState extends State<BookingFormPage> {
     };
 
     try {
-      // Save appointment to Firestore
-      await FirebaseFirestore.instance.collection('appointments').add(appointment);
+      await FirebaseFirestore.instance
+          .collection('appointments')
+          .add(appointment);
 
-      // Convert the appointment map to a map of strings
-      final appointmentStringMap = appointment.map((key, value) => MapEntry(key, value.toString()));
+      final appointmentStringMap =
+          appointment.map((key, value) => MapEntry(key, value.toString()));
 
-      // Navigate to AppointmentsView with the new appointment data
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => AppointmentsView(newAppointment: appointmentStringMap),
+          builder: (context) =>
+              AppointmentsView(newAppointment: appointmentStringMap),
         ),
       );
     } catch (e) {
@@ -101,7 +114,7 @@ class _BookingFormPageState extends State<BookingFormPage> {
         backgroundColor: Colors.blue,
         iconTheme: IconThemeData(color: Colors.white),
         titleTextStyle: TextStyle(
-          color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         title: Text(widget.doctorName),
       ),
       body: SingleChildScrollView(
@@ -206,7 +219,8 @@ class _BookingFormPageState extends State<BookingFormPage> {
             Center(
               child: ElevatedButton(
                 onPressed: _bookAppointment,
-                child: Text('Confirm Appointment', style: TextStyle(color: Colors.white)),
+                child: Text('Confirm Appointment',
+                    style: TextStyle(color: Colors.white)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),

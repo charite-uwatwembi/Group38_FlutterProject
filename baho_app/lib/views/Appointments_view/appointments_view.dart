@@ -21,12 +21,13 @@ class AppointmentsView extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context); // Handle back button press
+            Navigator.pop(context);
           },
         ),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('appointments').snapshots(),
+        stream:
+            FirebaseFirestore.instance.collection('appointments').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -38,19 +39,19 @@ class AppointmentsView extends StatelessWidget {
             return Center(child: Text('No appointments found'));
           }
 
-          final List<Map<String, String>> appointments = snapshot.data!.docs.map((doc) {
+          final List<Map<String, String?>> appointments =
+              snapshot.data!.docs.map((doc) {
             final data = doc.data() as Map<String, dynamic>;
             print("Fetched data: $data"); // Debug print to check data
 
             return {
-              'name': data['doctorName']?.toString() ?? 'Unknown',
-              'time': data['appointmentTime']?.toString() ?? 'Unknown',
-              'date': data['appointmentDate']?.toString() ?? 'Unknown',
-              'imageUrl': data['doctorImageUrl']?.toString() ?? 'assets/images/default.png',
+              'name': data['doctorName']?.toString(),
+              'time': data['time']?.toString(),
+              'date': data['date']?.toString(),
+              'imageUrl': data['doctorImageUrl']?.toString(),
             };
           }).toList();
 
-          // Add the new appointment if it exists
           if (newAppointment != null) {
             appointments.add(newAppointment!);
           }
@@ -63,22 +64,25 @@ class AppointmentsView extends StatelessWidget {
               print("Appointment: $appointment"); // Debug print to check appointment data
 
               return ListTile(
-                contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 leading: CircleAvatar(
                   radius: 30,
-                  backgroundImage: appointment['imageUrl']!.startsWith('assets/')
-                      ? AssetImage(appointment['imageUrl']!)
-                      : NetworkImage(appointment['imageUrl']!) as ImageProvider,
+                  backgroundImage: appointment['imageUrl'] != null &&
+                          appointment['imageUrl']!.startsWith('http')
+                      ? NetworkImage(appointment['imageUrl']!)
+                      : AssetImage(appointment['imageUrl'] ??
+                          'assets/images/default.png') as ImageProvider,
                 ),
                 title: Text(
-                  appointment['name']!,
+                  appointment['name'] ?? 'Unknown',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(appointment['time']!),
-                    Text(appointment['date']!),
+                    Text(appointment['time'] ?? 'Unknown'),
+                    Text(appointment['date'] ?? 'Unknown'),
                   ],
                 ),
               );
@@ -87,7 +91,7 @@ class AppointmentsView extends StatelessWidget {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2, // Set the current index to Appointments
+        currentIndex: 2,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
@@ -108,18 +112,15 @@ class AppointmentsView extends StatelessWidget {
           ),
         ],
         onTap: (index) {
-          // Navigate to different views based on the selected index
           if (index == 0) {
-            Navigator.pop(context); // Go back to HomeView
+            Navigator.pop(context);
           } else if (index == 1) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => TotalCategoryPage()),
             );
           } else if (index == 2) {
-            // Already on AppointmentsView, do nothing
           } else if (index == 3) {
-            // Navigate to SettingsView
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => SettingsView()),
