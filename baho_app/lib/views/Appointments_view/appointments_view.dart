@@ -21,7 +21,7 @@ class AppointmentsView extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context); // Handle back button press
+            Navigator.pop(context);
           },
         ),
       ),
@@ -48,7 +48,6 @@ class AppointmentsView extends StatelessWidget {
             };
           }).toList();
 
-          // Add the new appointment if it exists
           if (newAppointment != null) {
             appointments.add(newAppointment!);
           }
