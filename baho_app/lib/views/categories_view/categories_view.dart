@@ -57,12 +57,12 @@ class TotalCategoryPage extends StatelessWidget {
               specialists: 5,
             ),
             CategoryCard(
-              icon: Icons.person,
+              icon: Icons.psychology,
               label: 'psychology',
               specialists: 25,
             ),
             CategoryCard(
-              icon: Icons.person,
+              icon: Icons.biotech,
               label: 'Neurology',
               specialists: 25,
             ),
