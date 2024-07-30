@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:baho_app/main.dart'; // Update the import path according to your project structure
+import 'package:get/get.dart';
+import 'package:baho_app/main.dart'; // Ensure this import points to your main app file
+import 'package:baho_app/views/landing_view/landing_view.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('LandingView has welcome text and a start button', (WidgetTester tester) async {
+    // Build the LandingView and trigger a frame.
+    await tester.pumpWidget(GetMaterialApp(
+      home: LandingView(),
+    ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify the welcome text is present.
+    expect(find.text('Welcome to Baho'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify the start button is present.
+    expect(find.text('Get Started'), findsOneWidget);
   });
-
-  // Add more tests here as needed
 }

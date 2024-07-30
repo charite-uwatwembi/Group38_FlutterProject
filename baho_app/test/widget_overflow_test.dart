@@ -17,7 +17,7 @@ void main() {
       tester.binding.window.devicePixelRatioTestValue = 1.0;
 
       // Build the app
-      await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(MyApp());
 
       // Add a delay to ensure everything is rendered
       await tester.pumpAndSettle();
