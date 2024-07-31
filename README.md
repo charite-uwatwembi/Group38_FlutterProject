@@ -12,6 +12,10 @@ Link to Baho App Backend (https://drive.google.com/file/d/1oUj1DHvFXWrI0FfTGlAS0
 
 Link to Baho App Frontend: (https://drive.google.com/file/d/19BRrx1YG57EmB0KYnsyHyTiuxF7RC6RI/view?usp=sharing&authuser=1)
 
+## Link to our Firebase console Authentication
+
+Link to Baho App Authentication (https://console.firebase.google.com/u/0/project/baho-app-df230/authentication/users)
+
 ## Introduction
 
 Baho App aims to revolutionize healthcare accessibility by making it as easy to book a doctor's appointment as ordering food or a ride. The app provides detailed profiles of healthcare professionals, including qualifications, specialties, and patient ratings, enabling users to make informed decisions about their care.
