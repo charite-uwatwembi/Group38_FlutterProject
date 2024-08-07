@@ -12,6 +12,10 @@ Link to Baho App Backend (https://drive.google.com/file/d/1oUj1DHvFXWrI0FfTGlAS0
 
 Link to Baho App Frontend: (https://drive.google.com/file/d/19BRrx1YG57EmB0KYnsyHyTiuxF7RC6RI/view?usp=sharing&authuser=1)
 
+## Link to our APK File
+
+Link to Baho App APK (https://drive.google.com/file/d/1Xqi8ULCyy4Kjuy0ynbKeWq03A-5kbMsY/view?usp=sharing)
+
 ## Link to our Firestore console Authentication
 
 Link to Baho App Authentication (https://console.firebase.google.com/u/0/project/baho-app-df230/authentication/users)
