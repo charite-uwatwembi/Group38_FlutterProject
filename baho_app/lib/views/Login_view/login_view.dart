@@ -20,8 +20,6 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  
-
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(AuthController());
@@ -56,7 +54,8 @@ class _LoginViewState extends State<LoginView> {
                 SizedBox(height: 20.0),
                 CustomTextfield(
                     hint: AppStrings.passwordHint,
-                    textController: controller.passwordController),
+                    textController: controller.passwordController,
+                    obscureText: true), // Set obscureText to true
                 SizedBox(height: 20.0),
                 Align(
                   alignment: Alignment.centerLeft,
