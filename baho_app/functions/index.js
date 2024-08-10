@@ -37,5 +37,5 @@ exports.validateNewUser = functions.firestore
         );
       }
 
-    // Perform other validations as needed
+    
     });

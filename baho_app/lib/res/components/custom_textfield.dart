@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class CustomTextfield extends StatefulWidget {
   final String hint;
   final TextEditingController? textController;
-  final bool obscureText; // Add this parameter
+  final bool obscureText;
 
   const CustomTextfield({
     super.key,
     required this.hint,
     this.textController,
-    this.obscureText = false, // Default to false for non-password fields
+    this.obscureText = false,
   });
 
   @override
@@ -29,7 +29,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.textController,
-      obscureText: _obscureText, // Use the obscureText state
+      obscureText: _obscureText,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: widget.hint,

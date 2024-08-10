@@ -10,7 +10,7 @@ class DoctorCard extends StatelessWidget {
   final String address;
   final String workingTime;
   final String services;
-  final List<Map<String, dynamic>> availability; // Changed to dynamic
+  final List<Map<String, dynamic>> availability;
 
   const DoctorCard({
     Key? key,
