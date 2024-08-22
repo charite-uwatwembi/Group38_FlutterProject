@@ -22,7 +22,7 @@ Link to Baho App Authentication (https://console.firebase.google.com/u/0/project
 
 ## Introduction
 
-Baho App aims to revolutionize healthcare accessibility by making it as easy to book a doctor's appointment as ordering food or a ride. The app provides detailed profiles of healthcare professionals, including qualifications, specialties, and patient ratings, enabling users to make informed decisions about their care.
+Baho App aims to revolutionize healthcare accessibility by making it as easy to book a doctor's appointment as ordering food or a ride. The app provides detailed profiles of healthcare professionals, including qualifications, specialties, and patient ratings, and doctor's phone number enabling users to make informed decisions about their care.
 
 ## Team
 
