@@ -1,6 +1,6 @@
 # Baho App
 
-Welcome to the Baho App, an innovative mobile application designed to simplify booking appointments with healthcare professionals in Rwanda.
+Welcome to the Baho App, an beautiful mobile application designed to simplify booking appointments with healthcare professionals in Rwanda.
 
 
 
